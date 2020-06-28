@@ -25,7 +25,7 @@
 
 .Face {
   @include borders(white, #7b7b7b);
-  align-items: center;
+  @include buttons() align-items: center;
   cursor: pointer;
   display: flex;
   font-size: 35px;

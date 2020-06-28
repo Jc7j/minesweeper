@@ -1,8 +1,8 @@
-import { MAX_COLS, MAX_ROWS } from '../constants/index';
+import { MAX_COLS, MAX_ROWS, NO_OF_BOMBS } from '../constants/index';
 import { CellValue, CellState, Cell } from '../types/index';
 
 export const generateCells = (): Cell[][] => {
-  const cells: Cell[][] = [];
+  let cells: Cell[][] = [];
 
   for (let row = 0; row < MAX_ROWS; row++) {
     cells.push([]);
@@ -11,6 +11,29 @@ export const generateCells = (): Cell[][] => {
         value: CellValue.none,
         state: CellState.open,
       });
+    }
+  }
+
+  let bombsPlaced = 0;
+  while (bombsPlaced < NO_OF_BOMBS) {
+    const randomRow = Math.floor(Math.random() * MAX_ROWS);
+    const randomCol = Math.floor(Math.random() * MAX_COLS);
+
+    const currentCell = cells[randomRow][randomCol];
+    if (currentCell.value !== CellValue.bomb) {
+      cells = cells.map((row, rowIndex) =>
+        row.map((cell, colIndex) => {
+          if (randomRow === rowIndex && randomCol === colIndex) {
+            return {
+              ...cell,
+              value: CellValue.bomb,
+            };
+          }
+
+          return cell;
+        }),
+      );
+      bombsPlaced++;
     }
   }
 
