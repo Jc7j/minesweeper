@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import Button from '../Button';
 import NumberDisplay from '../NumberDisplay';
-import { Face, Cell, CellState } from '../../types';
-import { generateCells } from '../../utils/index';
+import { Face, Cell, CellState, CellValue } from '../../types';
+import { generateCells, openMultipleCells } from '../../utils/index';
 
 import './App.scss';
 
@@ -48,6 +48,25 @@ const App: React.FC = () => {
     // Start the game
     if (!live) {
       setLive(true);
+    }
+
+    const currentCell = cells[rowParam][colParam];
+    let newCells = cells.slice();
+
+    if (
+      currentCell.state === CellState.flagged ||
+      currentCell.state === CellState.visible
+    ) {
+      return;
+    }
+
+    if (currentCell.value === CellValue.bomb) {
+      // TODO: Take care of obmb click
+    } else if (currentCell.value === CellValue.none) {
+      newCells = openMultipleCells(newCells, rowParam, colParam);
+    } else {
+      newCells[rowParam][colParam].state = CellState.visible;
+      setCells(newCells);
     }
   };
 
