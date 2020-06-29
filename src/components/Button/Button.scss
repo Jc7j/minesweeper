@@ -2,12 +2,12 @@
 .Button {
   @include borders();
   @include buttons();
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
   font-weight: bold;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
 
   &.visible {
     border-color: #7b7b7b;
