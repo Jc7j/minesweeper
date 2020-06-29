@@ -12,7 +12,13 @@ const App: React.FC = () => {
   const renderCells = (): React.ReactNode => {
     return cells.map((row, rowIndex) =>
       row.map((cell, colIndex) => (
-        <Button key={`${rowIndex}-${colIndex}`} />
+        <Button
+          key={`${rowIndex}-${colIndex}`}
+          row={rowIndex}
+          col={colIndex}
+          state={cell.state}
+          value={cell.value}
+        />
       )),
     );
   };
