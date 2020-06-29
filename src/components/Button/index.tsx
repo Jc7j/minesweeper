@@ -24,7 +24,7 @@ const Button: React.FC<ButtonProps> = ({
             💣
           </span>
         );
-      } else if (value == CellValue.none) {
+      } else if (value === CellValue.none) {
         return null;
       }
 

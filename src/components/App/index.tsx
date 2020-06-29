@@ -5,6 +5,7 @@ import NumberDisplay from '../NumberDisplay';
 import { generateCells } from '../../utils/index';
 
 import './App.scss';
+import { Face } from '../../types';
 
 const App: React.FC = () => {
   const [cells, setCells] = useState(generateCells());
@@ -23,12 +24,13 @@ const App: React.FC = () => {
     );
   };
 
+  console.log(cells);
   return (
     <div className="App">
       <div className="Header">
         <NumberDisplay value={0} />
         <span className="Face" role="img" aria-label="face">
-          🙂{' '}
+          {Face.smile}
         </span>
         <NumberDisplay value={23} />
       </div>

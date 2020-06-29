@@ -4,7 +4,6 @@ import { CellValue, CellState, Cell } from '../types/index';
 export const generateCells = (): Cell[][] => {
   let cells: Cell[][] = [];
 
-  console.log(cells);
   for (let row = 0; row < MAX_ROWS; row++) {
     cells.push([]);
     for (let col = 0; col < MAX_COLS; col++) {
