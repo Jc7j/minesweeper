@@ -9,6 +9,10 @@
   justify-content: center;
   width: 30px;
 
+  &.red {
+    background: red;
+  }
+
   &.visible {
     border-color: #7b7b7b;
     border-width: 1px;
